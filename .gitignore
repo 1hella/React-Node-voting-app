@@ -32,3 +32,4 @@ node_modules
 npm-debug.log
 
 build/
+config/local.env.js
