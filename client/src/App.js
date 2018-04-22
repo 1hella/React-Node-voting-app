@@ -3,20 +3,20 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = { users: [] }
+  state = { polls: [] }
 
   componentDidMount() {
-    fetch('/users')
+    fetch('/api/polls')
       .then(res => res.json())
-      .then(users => this.setState({ users }));
+      .then(polls => this.setState({ polls }));
   }
   
   render() {
     return (
       <div className="App">
         <ul>
-        {this.state.users.map(user => 
-          <li key={user.id}>{user.name}</li>
+        {this.state.polls.map(poll => 
+          <li key={poll.id}>{poll.name}</li>
         )}
         </ul>
       </div>

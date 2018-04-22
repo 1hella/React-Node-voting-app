@@ -1,10 +1,11 @@
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -14,7 +15,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.use('/users', usersRouter);
+app.use('/api/polls', require('./api/poll'));
+app.use('/api/users', require('./api/user'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
